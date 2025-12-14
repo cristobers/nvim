@@ -12,8 +12,9 @@ vim.opt.expandtab      = true
 vim.opt.ttyfast        = true
 vim.opt.autoread       = true
 vim.opt.hidden         = true
+vim.opt.ls             = 0
 
-vim.cmd('colorscheme spacecamp')
+--vim.cmd('colorscheme spacecamp')
 vim.api.nvim_set_hl(0, "CursorLineNr", {fg = "yellow"})
 
 vim.opt.so             = 99

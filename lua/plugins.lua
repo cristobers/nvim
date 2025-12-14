@@ -1,15 +1,22 @@
-local vim  = vim
-local Plug = vim.fn['plug#']
+-- https://neovim.io/doc/user/pack.html
+vim.pack.add {
+	{ src = 'https://github.com/neovim/nvim-lspconfig' },
+	{ src = 'https://github.com/mason-org/mason.nvim' },
+	{ src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
+	{ src = 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim' },
+	{ src = 'https://github.com/Saghen/blink.cmp' },
+}
 
-vim.call('plug#begin')
-Plug('L3MON4D3/LuaSnip')
-Plug('VonHeikemen/lsp-zero.nvim')
-Plug('williamboman/mason.nvim')
-Plug('williamboman/mason-lspconfig.nvim')
-Plug('neovim/nvim-lspconfig')
-Plug('hrsh7th/nvim-cmp')
-Plug('hrsh7th/cmp-nvim-lsp')
-Plug('hrsh7th/cmp-buffer')
-Plug('hrsh7th/cmp-path')
-Plug('hrsh7th/cmp-cmdline')
-vim.call('plug#end')
+require('blink.cmp').setup({
+    fuzzy = { implementation = "lua" }
+})
+
+require('mason').setup()
+require('mason-lspconfig').setup()
+require('mason-tool-installer').setup({
+	ensure_installed = {
+		"rust_analyzer",
+		"lua_ls",
+		"stylua",
+	}
+})
